@@ -60,10 +60,14 @@
       $max_price = $max->fetch_row()[0];
       $min = $mysql->query("SELECT MIN(`wholesale`) FROM `$tablename`");
       $min_price = $min->fetch_row()[0];
-      $sum_stock1 = $mysql->query("SELECT SUM(`stock1`) FROM `$tablename`");
-      $sum_stock2 = $mysql->query("SELECT SUM(`stock2`) FROM `$tablename`");
-      $avg_price = $mysql->query("SELECT AVG(`price`) FROM `$tablename`");
-      $avg_wholesale = $mysql->query("SELECT AVG(`wholesale`) FROM `$tablename`");
+      $sum_1 = $mysql->query("SELECT SUM(`stock1`) FROM `$tablename`");
+      $sum_stock1 = $sum_1->fetch_row()[0];
+      $sum_2 = $mysql->query("SELECT SUM(`stock2`) FROM `$tablename`");
+      $sum_stock2 = $sum_2->fetch_row()[0];
+      $avg_1 = $mysql->query("SELECT AVG(`price`) FROM `$tablename`");
+      $avg_price = $avg_1->fetch_row()[0];
+      $avg_2 = $mysql->query("SELECT AVG(`wholesale`) FROM `$tablename`");
+      $avg_wholesale = $avg_2->fetch_row()[0];
       $mysql->close();
 
       if($result) {
@@ -91,7 +95,11 @@
                         } else echo "<td></td>";
                         echo "</tr>";
                     }
-               echo "</table>";
+               echo "</table>
+               <p>Общее количество товаров на складе 1: ".$sum_stock1."</p>
+               <p>Общее количество товаров на складе 2: ".$sum_stock2."</p>
+               <p>Средняя стоимость розничной цены товара: ".$avg_price."</p>
+               <p>Средняя стоимость оптовой цены товара: ".$avg_wholesale."</p>";
       }
   }
 ?>
