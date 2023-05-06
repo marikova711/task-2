@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 <?php
@@ -71,11 +71,12 @@
       $mysql->close();
 
       if($result) {
-          echo "<form action='action.php'>
-                <input type='submit' value='Обновить таблицу'>
+          echo "<div class='container mt-2'>
+                <form action='action.php'>
+                <input class='btn btn-outline-secondary' type='submit' value='Обновить таблицу'>
                 </form>
-                <table>
-                    <tr>
+                <table class='table table-bordered table-striped table-hover mt-2 align-middle'>
+                    <tr class='text-center'>
                         <th>№</th>
                         <th>Наименование товара</th>
                         <th>Стоимость, руб</th>
@@ -96,10 +97,11 @@
                         echo "</tr>";
                     }
                echo "</table>
-               <p>Общее количество товаров на складе 1: ".$sum_stock1."</p>
-               <p>Общее количество товаров на складе 2: ".$sum_stock2."</p>
-               <p>Средняя стоимость розничной цены товара: ".$avg_price."</p>
-               <p>Средняя стоимость оптовой цены товара: ".$avg_wholesale."</p>";
+               <p>Общее количество товаров на складе 1: ".$sum_stock1." шт.</p>
+               <p>Общее количество товаров на складе 2: ".$sum_stock2." шт.</p>
+               <p>Средняя стоимость розничной цены товара: ".$avg_price." руб.</p>
+               <p>Средняя стоимость оптовой цены товара: ".$avg_wholesale." руб.</p>
+               </div>";
       }
   }
 ?>
