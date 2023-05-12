@@ -437,7 +437,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		$italic=$this->italic($row,$col,$sheet);
 		if ($italic) {
-			$css .= "font-style:italic;";
+			$css .= "font-styles:italic;";
 		}
 		$underline=$this->underline($row,$col,$sheet);
 		if ($underline) {
@@ -452,7 +452,7 @@ class Spreadsheet_Excel_Reader {
 		$bRightCol = $this->borderRightColor($row,$col,$sheet);
 		$bTopCol = $this->borderTopColor($row,$col,$sheet);
 		$bBottomCol = $this->borderBottomColor($row,$col,$sheet);
-		// Try to output the minimal required style
+		// Try to output the minimal required styles
 		if ($bLeft!="" && $bLeft==$bRight && $bRight==$bTop && $bTop==$bBottom) {
 			$css .= "border:" . $this->lineStylesCss[$bLeft] .";";
 		}
@@ -596,7 +596,7 @@ class Spreadsheet_Excel_Reader {
 				if ($this->colhidden($i,$sheet)) {
 					$style .= "display:none;";
 				}
-				$out .= "\n\t\t<th style=\"$style\">" . strtoupper($this->colindexes[$i]) . "</th>";
+				$out .= "\n\t\t<th styles=\"$style\">" . strtoupper($this->colindexes[$i]) . "</th>";
 			}
 			$out .= "</tr></thead>\n";
 		}
@@ -608,7 +608,7 @@ class Spreadsheet_Excel_Reader {
 			if ($this->rowhidden($row,$sheet)) {
 				$style .= "display:none;";
 			}
-			$out .= "\n\t<tr style=\"$style\">";
+			$out .= "\n\t<tr styles=\"$style\">";
 			if ($row_numbers) {
 				$out .= "\n\t\t<th>$row</th>";
 			}
@@ -628,7 +628,7 @@ class Spreadsheet_Excel_Reader {
 					if ($this->colhidden($col,$sheet)) {
 						$style .= "display:none;";
 					}
-					$out .= "\n\t\t<td style=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
+					$out .= "\n\t\t<td styles=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
 					$val = $this->val($row,$col,$sheet);
 					if ($val=='') { $val="&nbsp;"; }
 					else { 

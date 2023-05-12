@@ -74,7 +74,7 @@
 		 */
 		private $StylesXML = false;
 		/**
-		 * @var array Container for cell value style data
+		 * @var array Container for cell value styles data
 		 */
 		private $Styles = array();
 
